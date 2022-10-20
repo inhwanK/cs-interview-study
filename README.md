@@ -18,7 +18,7 @@ https://velog.io/@hygoogi/%EA%B8%B0%EC%88%A0-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%
 
 https://zero-base.co.kr/event/media_BE_school_qna
 
-#### DB`````
+### DB
 
 - 커넥션 풀
 
@@ -27,7 +27,7 @@ https://zero-base.co.kr/event/media_BE_school_qna
   - 트랜잭션 개념 (commit, rollback)
   - 트랜잭션 격리 수준
   - DB 락
-  
+
 - 키
   - 개념
   - 종류
