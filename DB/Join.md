@@ -2,17 +2,15 @@
 
 이번 주제를 보면서 예제에 쓰일 테이블의 정보 입니다.
 
-T1 테이블
-
 </br>
+
+T1 테이블
 
 ![t1 테이블](https://user-images.githubusercontent.com/90227655/198257617-f53e6278-e4af-49be-afb2-dcf891124823.png)
 
 </br>
 
 T2 테이블
-
-</br>
 
 ![t2 테이블](https://user-images.githubusercontent.com/90227655/198257645-848acf65-25fb-4d0e-a9a5-3d1dfe98cd1f.png)
 
