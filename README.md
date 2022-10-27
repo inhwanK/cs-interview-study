@@ -13,7 +13,11 @@
 - [ORM](DB/ORM.md)
 - [JDBC](DB/JDBC.md)
 
-## 네트워크
+## Java
+
+---
+
+## Spring
 
 ---
 
@@ -24,18 +28,16 @@
 ## 자료구조
 
 ---
+
+## 네트워크
+
+---
+
 ## OS
 
 ---
-## Java
-
----
-## Spring
-
----
 
 
----
 ### 컨텐츠 정리된 자료
 
 https://github.com/JaeYeopHan/Interview_Question_for_Beginner
