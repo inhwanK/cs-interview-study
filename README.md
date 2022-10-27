@@ -5,14 +5,37 @@
 ---
 
 - [커넥션 풀](DB/Connection%20Pool.md)
-- 트랜잭션
-- 키
-- 인덱스
-- 정규화
-- Join
-- ORM
-- JDBC
+- [트랜잭션](DB/Transation.md)
+- [키](DB/KEY.md)
+- [인덱스](DB/Index.md)
+- [정규화](DB/Normalization.md)
+- [Join](DB/Join.md)
+- [ORM](DB/ORM.md)
+- [JDBC](DB/JDBC.md)
 
+## 네트워크
+
+---
+
+## Web
+
+---
+
+## 자료구조
+
+---
+## OS
+
+---
+## Java
+
+---
+## Spring
+
+---
+
+
+---
 ### 컨텐츠 정리된 자료
 
 https://github.com/JaeYeopHan/Interview_Question_for_Beginner
