@@ -1,9 +1,6 @@
 # cs-interview-study
 
 ## DB
-
----
-
 - [키](DB/KEY.md)
 - [인덱스](DB/Index.md)
 - [정규화](DB/Normalization.md)
