@@ -4,38 +4,26 @@
 
 ---
 
-- [커넥션 풀](DB/Connection%20Pool.md)
-- [트랜잭션](DB/Transation.md)
 - [키](DB/KEY.md)
 - [인덱스](DB/Index.md)
 - [정규화](DB/Normalization.md)
 - [Join](DB/Join.md)
+- [트랜잭션](DB/Transation.md)
+- [커넥션 풀](DB/Connection%20Pool.md)
 - [ORM](DB/ORM.md)
 - [JDBC](DB/JDBC.md)
 
 ## Java
 
----
-
 ## Spring
-
----
 
 ## Web
 
----
-
 ## 자료구조
-
----
 
 ## 네트워크
 
----
-
 ## OS
-
----
 
 
 ### 컨텐츠 정리된 자료
