@@ -54,3 +54,147 @@ JDBC vsJPA
 >- 개발시 SQL문작성
 >- DBMS 변경시 재사용 어려움
 >- 2개 이상의 DBMS의 지원시 유지보수가 어려움
+
+
+### JDBC vs JPA, SPringJDBC
+#### JDBC란?
+>DB에 접근하고 SQL을 날릴 수 있게 해주는 자바의 표준 API다.
+Driver Manager를 사용하여 드라이버들을 로딩, 해제한다.
+![](https://velog.velcdn.com/images/ihanseul731/post/e0ff8ca8-5162-470e-9621-1b55271c3cd2/image.png)
+```
+// JDBC를 사용한 Java Application(DAO)
+public class CarDao {
+    public Connection getConnection() {
+        Connection con = null;
+        String server = "localhost:3306"; // MySQL 서버 주소
+        String database = "DB_NAME"; // MySQL DATABASE 이름
+        String option = "?useSSL=false&serverTimezone=UTC";
+        String userName = "USER_ID"; //  MySQL 서버 아이디
+        String password = "USER_PASSWORD"; // MySQL 서버 비밀번호
+
+        // 드라이버 로딩
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(" !! JDBC Driver load 오류: " + e.getMessage());
+        }
+
+        // 드라이버 연결
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://" + server + "/" + database + option, userName, password);
+            System.out.println("정상적으로 연결되었습니다.");
+        } catch (SQLException e) {
+            System.err.println("연결 오류:" + e.getMessage());
+        }
+        return con;
+    }
+
+    // 드라이버 연결해제
+    public void closeConnection(Connection con) {
+        try {
+            if (con != null)
+                con.close();
+        } catch (SQLException e) {
+            System.err.println("con 오류:" + e.getMessage());
+        }
+    }
+
+    // CRUD
+    public void addCar(Car car) throws SQLException {
+        String query = "INSERT INTO car (car_id, car_brand, car_created) VALUES (?, ?, ?)";
+        PreparedStatement pstmt = getConnection().prepareStatement(query);
+        pstmt.setInt(1, car.getId());
+        pstmt.setString(2, car.getBrand());
+        pstmt.setString(3, car.getCreated());
+        pstmt.executeUpdate();
+    }
+}
+```
+
+#### JPA란? 
+>JPA는 자바 진영 ORM의 API표준 명세이다. 
+>**JPA도 내부적으로 JDBC를 사용한다.**
+![](https://velog.velcdn.com/images/ihanseul731/post/d4f2bab9-7fc0-4a00-a864-79c5cd1162c2/image.png)
+```
+// JDBC를 사용한 Java Application(DAO)
+public class CarDao {
+    public Connection getConnection() {
+        Connection con = null;
+        String server = "localhost:3306"; // MySQL 서버 주소
+        String database = "DB_NAME"; // MySQL DATABASE 이름
+        String option = "?useSSL=false&serverTimezone=UTC";
+        String userName = "USER_ID"; //  MySQL 서버 아이디
+        String password = "USER_PASSWORD"; // MySQL 서버 비밀번호
+
+        // 드라이버 로딩
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(" !! JDBC Driver load 오류: " + e.getMessage());
+        }
+
+        // 드라이버 연결
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://" + server + "/" + database + option, userName, password);
+            System.out.println("정상적으로 연결되었습니다.");
+        } catch (SQLException e) {
+            System.err.println("연결 오류:" + e.getMessage());
+        }
+        return con;
+    }
+
+    // 드라이버 연결해제
+    public void closeConnection(Connection con) {
+        try {
+            if (con != null)
+                con.close();
+        } catch (SQLException e) {
+            System.err.println("con 오류:" + e.getMessage());
+        }
+    }
+
+    // CRUD
+    public void addCar(Car car) throws SQLException {
+        String query = "INSERT INTO car (car_id, car_brand, car_created) VALUES (?, ?, ?)";
+        PreparedStatement pstmt = getConnection().prepareStatement(query);
+        pstmt.setInt(1, car.getId());
+        pstmt.setString(2, car.getBrand());
+        pstmt.setString(3, car.getCreated());
+        pstmt.executeUpdate();
+    }
+}
+```
+#### Spring DataJDBC란?
+>Spring JDBC는 JDBC에서 DriveManager가 하는 일들을 JDBC Template에게 맡긴다. 개발자는 쿼리로 질의 할수 있음
+>**JDBC Template은 SQL의 Mapper중 하나임(Mybatis도 SQL Mapper중 하나임)
+
+```
+public class CarDao {
+    private String driver = "com.mysql.cj.jdbc.Driver";
+    private String url = "localhost:3306";
+    private String userid = "USER_ID";
+    private String userpw = "USER_PASSWORD";
+
+    private DriverManagerDataSource dataSource;
+    private JdbcTemplate template;
+
+    public CarDao() {
+        dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClass(driver);
+        dataSource.setJdbcUrl(url);
+        dataSource.setUser(userid);
+        dataSource.setPassword(userpw);
+
+        template = new JdbcTemplate();
+        template.setDataSource(dataSource);
+    }
+
+    // CRUD
+    public int carInsert(Car car) {
+        String query = "INSERT INTO car (car_id, car_brand, car_created) VALUES (?, ?, ?)";
+        int result = template.update(query, car.getId(), car.getBrand(), car.getCreated());
+
+        return result;
+    }
+ }
+```
