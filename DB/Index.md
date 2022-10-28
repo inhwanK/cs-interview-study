@@ -112,7 +112,7 @@ DB의 스캔 방식에는 Full Table Scan과 Index Scan이 있다.
 
 두 인덱스가 함께 적용 되는 경우에는 논-클러스터링 인덱스의 리프 페이지에 실제 데이터 페이지 주소가 아닌, 클러스터링 인덱스가 적용된 컬럼의 값이 들어간다.
 
-### 어떤 컬럼에 인덱스를 적용할까?
+## 어떤 컬럼에 인덱스를 적용할까?
 카디널리티 (=요소의 개수)
 - 카디널리티가 높은 것. 다시말해 데이터의 중복도가 낮은 것
 - where, join order by 절에 자주 사용되는 컬럼
@@ -121,7 +121,7 @@ DB의 스캔 방식에는 Full Table Scan과 Index Scan이 있다.
   - b-tree는 갱신 작업 시 성능이 좋지 않다.
 - 규모가 작지 않은 테이블
 
-### 참조 자료
+## 참조 자료
 - [우테코 - [10분 테코톡] 라라, 제로의 데이터베이스 인덱스](https://youtu.be/edpYzFgHbqs)
 - https://github.com/WeareSoft/tech-interview/blob/master/contents/db.md#index%EB%9E%80
 - https://hoon93.tistory.com/53
